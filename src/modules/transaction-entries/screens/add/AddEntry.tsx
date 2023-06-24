@@ -16,7 +16,21 @@ type IState = {
     date: Date;
     description: string;
     amount: number;
-    expense: boolean
+    expense: boolean;
+ 
+    txnDayC: number |null;
+    txnMonthC: number |null;
+    txnYearC: number |null;
+    txnDayNA: number |null;
+    txnMonthNA: number |null;
+    txnYearNA: number |null;
+    clinicDate: Date;
+
+  natureOfAilment: String;
+ 
+  procedureUndertaken: String;
+
+  dateOfNextAppointment: Date;
 }
 
 const AddEntry: React.FC = () => {
@@ -25,15 +39,30 @@ const AddEntry: React.FC = () => {
 
     const navigation = useNavigation();
 
-    const date = new Date(); // for initializing all the dates.
+    const date = new Date();
+    const cdate = new Date(); // for initializing all the dates.
+    const nadate = new Date();
     const [state, setState] = useState<IState>({
         txnDay: date.getDate(),
         txnMonth: date.getMonth(),
         txnYear: date.getFullYear(),
+        txnDayC: cdate.getDate(),
+        txnMonthC: cdate.getMonth(),
+        txnYearC: cdate.getFullYear(),
+        txnDayNA: date.getDate(),
+        txnMonthNA: date.getMonth(),
+        txnYearNA: date.getFullYear(),
         date,
         description: '',
         amount: 0,
-        expense: true
+        expense: true,
+        clinicDate: cdate,
+
+  natureOfAilment: '',
+ 
+  procedureUndertaken: '',
+
+  dateOfNextAppointment: nadate,
     })
 
     const [showDatePicker, setShowDatePicker] = useState(Platform.OS === "ios" ? true : false);
@@ -43,6 +72,8 @@ const AddEntry: React.FC = () => {
             <View style={styles.container}>
                 <Text h3 style={styles.inputContainerStyle}>Make new transaction entry</Text>
                 {/* Only show button below if the OS is not ios. IOS DateTimePicker is visible by default */}
+                <Text style = {styles.inputContainerStyle}>Clinic Date</Text>
+                
                 <View style={[styles.inputContainerStyle, { flexDirection: 'row', alignSelf: 'flex-start' }]}>
                     {Platform.OS !== "ios" && <Button
                         radius={6}
@@ -70,13 +101,7 @@ const AddEntry: React.FC = () => {
                         }}
                     />}
                 </View>
-                <CheckBox
-                    title='Income?'
-                    containerStyle={[styles.inputContainerStyle, { marginTop: 10 }]}
-                    checked={!state.expense}
-                    onPress={() => { setState({ ...state, expense: !state.expense }) }}
-                    style={styles.inputStyle}
-                />
+                
                 <Input
                     label="Description"
                     placeholder="Enter brief transaction description here"
@@ -95,7 +120,35 @@ const AddEntry: React.FC = () => {
                     onChangeText={amount => setState({ ...state, amount: +amount })}
                     style={styles.inputStyle}
                 />
-
+                 <Text style = {styles.inputContainerStyle}>Date of Next Appointment</Text>
+                 <View style={[styles.inputContainerStyle, { flexDirection: 'row', alignSelf: 'flex-start' }]}>
+                    {Platform.OS !== "ios" && <Button
+                        radius={6}
+                        title={moment(state.date).format("LL")}
+                        onPress={() => {
+                            setShowDatePicker(true);
+                        }}
+                    />}
+                    {showDatePicker && <DateTimePicker
+                        style={styles.inputContainerStyle}
+                        value={state.date}
+                        mode={'date'}
+                        //is24Hour={true}
+                        display="default"
+                        onChange={(_event: any, selectedDate: any) => {
+                            const date: Date = selectedDate as Date;
+                            setState({
+                                ...state,
+                                date: selectedDate,
+                                txnDay: date.getDate(),
+                                txnMonth: date.getMonth(),
+                                txnYear: date.getFullYear()
+                            })
+                            setShowDatePicker(Platform.OS === "ios" ? true : false);
+                        }}
+                    />}
+                </View>
+                
                 <View style={{ flexDirection: 'row' }}>
                     <Button style={[styles.inputContainerStyle, { paddingRight: 1 }]}
                         title="Submit"
@@ -112,13 +165,15 @@ const AddEntry: React.FC = () => {
                         buttonStyle={{ backgroundColor: 'orange' }}
                     />
                 </View>
+
+
             </View>
         </ScrollView>
     )
 }
 const styles = StyleSheet.create({
     container: {
-        backgroundColor: '#fffff2',
+        backgroundColor: 'mistyrose',
         alignItems: 'center',
         justifyContent: 'center',
         width: '100%',
@@ -130,7 +185,7 @@ const styles = StyleSheet.create({
         backgroundColor: '#fffff2'
     },
     inputStyle: {
-        backgroundColor: '#F2F3F5',
+        backgroundColor: 'mintcream',
         borderRadius: 6,
         height: '100%',
         padding: 6

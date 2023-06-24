@@ -39,9 +39,9 @@ const App: React.FC = () => {
         options={{
           title: 'Transaction Manager',
           tabBarActiveBackgroundColor: 'transparent',
-          tabBarActiveTintColor: 'darkblue',
+          tabBarActiveTintColor: 'lightblue',
           headerShown: false,
-          tabBarLabel: 'Transaction',
+          tabBarLabel: 'Client Record',
           tabBarIcon: ({ color, size }) => (
             <Icon
               name="receipt-long"
@@ -57,11 +57,11 @@ const App: React.FC = () => {
         options={{
           title: "Asset Manager",
           headerShown: false,
-          tabBarLabel: 'Asset',
-          tabBarActiveTintColor: 'darkgreen',
+          tabBarLabel: 'Patient',
+          tabBarActiveTintColor: 'lightblue',
           tabBarIcon: ({ color, size }) => (
             <Icon
-              name="inventory"
+              name="star"
               color={color}
               size={size}
             />

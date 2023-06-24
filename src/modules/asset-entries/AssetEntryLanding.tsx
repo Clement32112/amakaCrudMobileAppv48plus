@@ -116,7 +116,7 @@ const AppStack = () => {
                 presentation: 'card',
                 keyboardHandlingEnabled: true,
                 headerStyle: {
-                    backgroundColor: 'lightgreen',
+                    backgroundColor: 'ghostwhite',
                     height: 90
                 },
                 headerTitleStyle: {

@@ -52,7 +52,7 @@ export default EntrySectionList;
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: 'lightgreen',
+        backgroundColor: 'mistyrose',
         alignItems: 'center',
         justifyContent: 'center'
     },

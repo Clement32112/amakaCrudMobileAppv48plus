@@ -32,7 +32,7 @@ type IState = {
     dateOfBirth: Date;
     homeAddress: string;
     dateOfRegistration: Date;
-     _21120612479: true;
+     _21120612479: boolean;
 }
 
 const AddEntry: React.FC = () => {
@@ -73,83 +73,51 @@ const AddEntry: React.FC = () => {
 
     })
 
+   
     const [showDatePicker, setShowDatePicker] = useState(Platform.OS === "ios" ? true : false);
-
+    const [showDatePicker1, setShowDatePicker1] = useState(Platform.OS === "ios" ? true : false);
     return (
         <ScrollView>
             <View style={styles.container}>
-                <Text h3 style={styles.inputContainerStyle}>Add new BioData entry</Text>
-                {/* Only show button below if the OS is not ios. IOS DateTimePicker is visible by default */}
-                <View style={[styles.inputContainerStyle, { flexDirection: 'row', alignSelf: 'flex-start' }]}>
-                    {Platform.OS !== "ios" && <Button
-                        radius={6}
-                        title={moment(state.date).format("LL")}
-                        onPress={() => {
-                            setShowDatePicker(true);
-                        }}
-                    />}
-                    {showDatePicker && <DateTimePicker
-                        style={styles.inputContainerStyle}
-                        value={state.date}
-                        mode={'date'}
-                        //is24Hour={true}
-                        display="default"
-                        onChange={(_event: any, selectedDate: any) => {
-                            const date: Date = selectedDate as Date;
-                            setState({
-                                ...state,
-                                date: selectedDate,
-                                acquireDay: date.getDate(),
-                                acquireMonth: date.getMonth(),
-                                acquireYear: date.getFullYear()
-                            })
-                            setShowDatePicker(Platform.OS === "ios" ? true : false);
-                        }}
-                    />}
-                </View>
-                <CheckBox
-                    title='Tangible?'
-                    containerStyle={[styles.inputContainerStyle, { marginTop: 10 }]}
-                    checked={!state.tangible}
-                    onPress={() => { setState({ ...state, tangible: !state.tangible }) }}
-                    style={styles.inputStyle}
-                />
+               
+             
                 <Input
                     label="FirstName"
                     placeholder="Enter brief asset description here"
                     multiline
                     inputContainerStyle={styles.inputContainerStyle}
-                    leftIcon={{ type: 'font-awesome', name: 'comment' }}
+                    leftIcon={{ type: 'font-awesome', name: 'child' }}
                     onChangeText={firstName => setState({ ...state, firstName })}
                     style={styles.inputStyle}
                 />
                 <Input
                     label="lastName"
-                    placeholder="Enter value here"
-                    keyboardType="numeric"
+                    placeholder="middleName"
+                    multiline
                     inputContainerStyle={styles.inputContainerStyle}
-                    leftIcon={{ type: 'font-awesome', name: 'money' }}
+                    leftIcon={{ type: 'font-awesome', name: 'child' }}
                     onChangeText={lastName => setState({ ...state, lastName})}
                     style={styles.inputStyle}
                 />
                 <Input
                     label="middleName"
-                    placeholder="Enter brief asset description here"
+                    placeholder="middleName"
                     multiline
                     inputContainerStyle={styles.inputContainerStyle}
-                    leftIcon={{ type: 'font-awesome', name: 'comment' }}
+                    leftIcon={{ type: 'font-awesome', name: 'child' }}
                     onChangeText={middleName => setState({ ...state, middleName })}
                     style={styles.inputStyle}
                 />
-                <Input
-                    label="dateOfBirth"
-                    placeholder="Enter value here"
-                    keyboardType="numeric"
-                    inputContainerStyle={styles.inputContainerStyle}
-                    leftIcon={{ type: 'font-awesome', name: 'money' }}
-                    onChangeText={value => setState({ ...state, value: +value })}
-                    style={styles.inputStyle}
-                />
+             
+             <Input
+               label="homeAddress"
+               placeholder="Enter Address here"
+               multiline
+               inputContainerStyle={styles.inputContainerStyle}
+               leftIcon={{ type: 'font-awesome', name: 'home' }}
+               onChangeText={homeAddress => setState({ ...state, homeAddress})}
+               style={styles.inputStyle}
+           />
                   <Text 
                 style = {styles.inputContainerStyle}
                 
@@ -172,58 +140,53 @@ const AddEntry: React.FC = () => {
                             const DOB: Date = selectedDate as Date;
                             setState({
                                 ...state,
-                                date: selectedDate,
-                                acquireDay: DOB.getDate(),
-                                acquireMonth: DOB.getMonth(),
-                                acquireYear: DOB.getFullYear()
+                                dateOfBirth: selectedDate,
+                                acquireDayB: DOB.getDate(),
+                                acquireMonthB: DOB.getMonth(),
+                                acquireYearB: DOB.getFullYear()
                             })
                             setShowDatePicker(Platform.OS === "ios" ? true : false);
                         }}
                     />}
                 </View>
                 
-                  <Input
-                    label="homeAddress"
-                    placeholder="Enter value here"
-                    keyboardType="numeric"
-                    inputContainerStyle={styles.inputContainerStyle}
-                    leftIcon={{ type: 'font-awesome', name: 'money' }}
-                    onChangeText={value => setState({ ...state, value: +value })}
-                    style={styles.inputStyle}
-                />
                 <Text 
                 style = {styles.inputContainerStyle}
                 
                 > Date of Registration</Text>                
                 <View style={[styles.inputContainerStyle, { flexDirection: 'row', alignSelf: 'flex-start' }]}>
                     {Platform.OS !== "ios" && <Button
+                    
                         radius={6}
-                        title={moment(state.date).format("LL")}
+                        title={moment(state.dateOfRegistration).format("LL")}
                         onPress={() => {
-                            setShowDatePicker(true);
+                            setShowDatePicker1(true);
                         }}
                     />}
-                    {showDatePicker && <DateTimePicker
+                    {showDatePicker1 && <DateTimePicker
                         style={styles.inputContainerStyle}
-                        value={state.date}
+                        
+                        value={state.dateOfRegistration}
                         mode={'date'}
                         //is24Hour={true}
                         display="default"
                         onChange={(_event: any, selectedDate: any) => {
-                            const date: Date = selectedDate as Date;
+                            const DOR: Date = selectedDate as Date;
                             setState({
                                 ...state,
-                                date: selectedDate,
-                                acquireDay: date.getDate(),
-                                acquireMonth: date.getMonth(),
-                                acquireYear: date.getFullYear()
+                                dateOfRegistration: selectedDate,
+                                acquireDayR: DOR.getDate(),
+                                acquireMonthR: DOR.getMonth(),
+                                acquireYearR: DOR.getFullYear()
                             })
-                            setShowDatePicker(Platform.OS === "ios" ? true : false);
+                            setShowDatePicker1(Platform.OS === "ios" ? true : false);
+                            
                         }}
                     />}
                 </View>
                 <CheckBox
                     title='_21120612479?'
+                    
                     containerStyle={[styles.inputContainerStyle, { marginTop: 10 }]}
                     checked={!state.tangible}
                     onPress={() => { setState({ ...state, tangible: !state.tangible }) }}
@@ -236,14 +199,18 @@ const AddEntry: React.FC = () => {
                         onPress={() => {
                             //call create which will also make the form disappear
                             createEntry(state, navigation);
+                            
                         }}
+                        buttonStyle={{ backgroundColor: 'lightblue' }}
                     /><Button style={[styles.inputContainerStyle, { paddingLeft: 1 }]}
                         title="Cancel"
                         onPress={() => {
                             //call create which will also make the form disappear
                             navigation.goBack();
                         }}
-                        buttonStyle={{ backgroundColor: 'red' }}
+                        buttonStyle={{ backgroundColor: 'lightpink' }}
+                    
+                  
                     />
                 </View>
             </View>
@@ -252,7 +219,7 @@ const AddEntry: React.FC = () => {
 }
 const styles = StyleSheet.create({
     container: {
-        backgroundColor: '#fffff2',
+        backgroundColor: 'mistyrose',
         alignItems: 'center',
         justifyContent: 'center',
         width: '100%',
@@ -268,7 +235,12 @@ const styles = StyleSheet.create({
         borderRadius: 6,
         height: '100%',
         padding: 6
-    }
+    },
+    buttonStyle1:
+    { 
+        width: '100%',
+        padding: 10,
+        backgroundColor: 'mistyrose' }
 });
 
 export default AddEntry;
