@@ -74,6 +74,12 @@ const App: React.FC = () => {
 
   //Prepare our conditional display. What we display will depend on whether dataSource is available or not
   const Display = () => {
+    return (
+
+      <NavigationContainer>
+        <TabNavigator />
+      </NavigationContainer>
+    )
     console.log(dataSource)
     if (dataSource) {
       return (
