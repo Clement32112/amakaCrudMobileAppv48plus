@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import { Image, StyleSheet, TouchableOpacity, View } from 'react-native';
 import { DataSource } from 'typeorm/browser';
-import { AssetEntry } from './entities/asset-entry.entity';
+import { AssetEntry } from './entities/bio-data.entity';
 import { createAssetEntry, deleteAssetEntry, getAssetEntries, updateAssetEntry } from './services/asset-entry.service';
 import { AppStackParamList, DisplayOptions } from './types/definitions';
 import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -63,7 +63,7 @@ const AppStack = () => {
                         onPress={() => setMenuVisible(true)}
                     />}
                     onRequestClose={() => setMenuVisible(false)}
-                    style={{ backgroundColor: 'lightgreen' }}
+                    style={{ backgroundColor: 'mistyrose' }}
                 >
                     <MenuItem
                         onPress={() => {
@@ -124,7 +124,7 @@ const AppStack = () => {
                     fontSize: 18,
                     //fontFamily: 'space-mono'
                 },
-                title: "Personal Assets",
+                title: "Bio Data",
                 //Below can be overriden at the level of stack.screen
                 headerRight: () => (
                     <View style={{ flexDirection: 'row' }}>
@@ -143,7 +143,7 @@ const AppStack = () => {
             }} >
             <Stack.Screen name="AssetEntryHomeScreen" component={AssetEntryHomeScreen}
                 options={{ //override here, the general value in screenOptions above.
-                    headerTitleAlign: 'left', 
+                    headerTitleAlign: 'left',
                     headerTitleStyle: {
                         fontSize: 21,
                     }

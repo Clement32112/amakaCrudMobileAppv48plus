@@ -89,7 +89,7 @@ const TransactionEntryHomeScreen: React.FC = () => {
                     searchIcon={{ size: 24 }}
                     placeholder="Type here..."
                     value={search}
-                    containerStyle={{ backgroundColor: 'lightblue' }}
+                    containerStyle={{ backgroundColor: 'mistyrose' }}
                     onChangeText={(text) => searchFilterFunction(text)}
                 />
             </View>
@@ -100,7 +100,7 @@ const TransactionEntryHomeScreen: React.FC = () => {
                 onPress={() => navigation.navigate("AddEntryScreen" as never)}>
                 <Text><Icon
                     name="add"
-                    color="green"
+                    color="pink"
                     size={20}
                     raised={true}
                 /></Text>

@@ -4,7 +4,7 @@ import { Button, Input, Text, CheckBox } from '@rneui/base';
 import DateTimePicker from '@react-native-community/datetimepicker'; //installation required
 import { AssetEntryContext } from '../../contexts/Contexts';
 import { RouteProp, useNavigation, useRoute } from '@react-navigation/native';
-import { AssetEntry } from '../../entities/asset-entry.entity';
+import { AssetEntry } from '../../entities/bio-data.entity';
 import moment from 'moment';
 
 /**

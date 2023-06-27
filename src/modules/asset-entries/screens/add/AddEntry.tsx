@@ -83,7 +83,7 @@ const AddEntry: React.FC = () => {
              
                 <Input
                     label="FirstName"
-                    placeholder="Enter brief asset description here"
+                    placeholder="firstName"
                     multiline
                     inputContainerStyle={styles.inputContainerStyle}
                     leftIcon={{ type: 'font-awesome', name: 'child' }}
@@ -92,7 +92,7 @@ const AddEntry: React.FC = () => {
                 />
                 <Input
                     label="lastName"
-                    placeholder="middleName"
+                    placeholder="lastName"
                     multiline
                     inputContainerStyle={styles.inputContainerStyle}
                     leftIcon={{ type: 'font-awesome', name: 'child' }}

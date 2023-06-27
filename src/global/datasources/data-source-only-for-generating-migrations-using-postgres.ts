@@ -1,6 +1,6 @@
 import "reflect-metadata"
 import { DataSource } from "typeorm/browser"
-import { AssetEntry } from "../../modules/asset-entries/entities/asset-entry.entity"
+import { AssetEntry } from "../../modules/asset-entries/entities/bio-data.entity"
 import { TransactionEntry } from "../../modules/transaction-entries/entities/transaction-entry.entity"
 
 //Here, I use postgres driver to create migrations for production environment

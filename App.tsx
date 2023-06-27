@@ -23,7 +23,7 @@ const App: React.FC = () => {
       activeTintColor: 'green',
       inactiveTintColor: 'grey',
       style: {
-        backgroundColor: '#eee',
+        backgroundColor: 'mistyrose',
       },
       backBehavior: 'history'//Behaviour when system back is touched. Options are none, initialRoute, order, history. This seems to be buggy
     }

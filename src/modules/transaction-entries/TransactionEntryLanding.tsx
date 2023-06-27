@@ -63,7 +63,7 @@ const AppStack = () => {
                         onPress={() => setMenuVisible(true)}
                     />}
                     onRequestClose={() => setMenuVisible(false)}
-                    style={{ backgroundColor: 'lightblue' }}
+                    style={{ backgroundColor: 'ghostwhite' }}
                 >
                     <MenuItem
                         onPress={() => {
@@ -116,7 +116,7 @@ const AppStack = () => {
                 presentation: 'card',
                 keyboardHandlingEnabled: true,
                 headerStyle: {
-                    backgroundColor: 'lightblue',
+                    backgroundColor: 'ghostwhite',
                     height: 90
                 },
                 headerTitleStyle: {
@@ -124,7 +124,7 @@ const AppStack = () => {
                     fontSize: 18,
                     //fontFamily: 'space-mono'
                 },
-                title: "Personal Transactions",
+                title: "Client Records",
                 //Below can be overriden at the level of stack.screen
                 headerRight: () => (
                     <View style={{ flexDirection: 'row' }}>

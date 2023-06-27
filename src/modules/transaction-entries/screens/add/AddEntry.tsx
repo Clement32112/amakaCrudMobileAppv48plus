@@ -56,6 +56,7 @@ const AddEntry: React.FC = () => {
         description: '',
         amount: 0,
         expense: true,
+        
         clinicDate: cdate,
 
   natureOfAilment: '',
@@ -70,7 +71,7 @@ const AddEntry: React.FC = () => {
     return (
         <ScrollView>
             <View style={styles.container}>
-                <Text h3 style={styles.inputContainerStyle}>Make new transaction entry</Text>
+                <Text h3 style={styles.inputContainerStyle}>Client Record</Text>
                 {/* Only show button below if the OS is not ios. IOS DateTimePicker is visible by default */}
                 <Text style = {styles.inputContainerStyle}>Clinic Date</Text>
                 
@@ -103,21 +104,21 @@ const AddEntry: React.FC = () => {
                 </View>
                 
                 <Input
-                    label="Description"
-                    placeholder="Enter brief transaction description here"
+                    label="Procedue to be Undertaken"
+                    placeholder="Enter brief description here"
                     multiline
                     inputContainerStyle={styles.inputContainerStyle}
                     leftIcon={{ type: 'font-awesome', name: 'comment' }}
-                    onChangeText={description => setState({ ...state, description })}
+                    onChangeText={procedureUndertaken => setState({ ...state, procedureUndertaken })}
                     style={styles.inputStyle}
                 />
                 <Input
-                    label="Amount"
-                    placeholder="Enter amount here"
-                    keyboardType="numeric"
+                    label="Nature of Ailement"
+                    placeholder="Enter brief description here"
+                    multiline
                     inputContainerStyle={styles.inputContainerStyle}
-                    leftIcon={{ type: 'font-awesome', name: 'money' }}
-                    onChangeText={amount => setState({ ...state, amount: +amount })}
+                    leftIcon={{ type: 'font-awesome', name: 'heart' }}
+                    onChangeText={natureOfAilment => setState({ ...state, natureOfAilment})}
                     style={styles.inputStyle}
                 />
                  <Text style = {styles.inputContainerStyle}>Date of Next Appointment</Text>

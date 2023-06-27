@@ -146,7 +146,7 @@ const Spreadsheet: React.FC<Props> = ({ entries }) => {
 
     return (
         <View style={styles.container}>
-            <View style={[styles.inputContainerStyle, { flexDirection: 'row', justifyContent: 'space-between', backgroundColor: "lightgreen" }]}>
+            <View style={[styles.inputContainerStyle, { flexDirection: 'row', justifyContent: 'space-between', backgroundColor: "pink" }]}>
                 <Text h3>Entries found... <Badge status="primary" value={entries.length} /></Text>
                 <TouchableOpacity
                     style={{ height: 20, top: -9 }}

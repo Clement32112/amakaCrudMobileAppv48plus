@@ -1,7 +1,7 @@
-import { useCallback, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { DataSource } from 'typeorm/browser';
 import { name1655204334428 } from '../../migrations/1655204334428-name';
-import { AssetEntry } from '../../modules/asset-entries/entities/asset-entry.entity';
+import { AssetEntry } from '../../modules/asset-entries/entities/bio-data.entity';
 import { TransactionEntry } from '../../modules/transaction-entries/entities/transaction-entry.entity';
 
 const dataSource = new DataSource({
@@ -26,22 +26,60 @@ const dataSource = new DataSource({
 
 });
 
-//Below is a custom hook that return's react's userCallback call. To be further explained in class
+/* //Below is a custom hook that return's react's userCallback call. To be further explained in class
 const useSqliteDataSource = async () => {
-    const [initializedDataSource, setInitializedDataSource] = useState<DataSource | null >(null)
+    const [initializedDataSource, setInitializedDataSource] = useState<DataSource | null>(null)
     const initDataSource = useCallback(async () => {//useCallback is a hook to be explained in class. Meanwhile, look it up online.
-        try{
-            if(!initializedDataSource){ //first time
+        console.log("Data:", initializedDataSource)
+       
+
+        try {
+            if (!initializedDataSource) { //first time
+
+              
                 const _initializedDataSource = await dataSource.initialize()
+                console.log('finish data source')
                 setInitializedDataSource(_initializedDataSource);
                 return _initializedDataSource;
-            }else{
+            } else {
+                console.log('data source has been initialized')
                 return initializedDataSource; //the one in state
+
             }
-        }catch(error){
+        } catch (error) {
+            console.log("failed to retrieve data")
             return null;
         }
     }, [])
+
     return await initDataSource();
 }
-export default useSqliteDataSource;
+export default useSqliteDataSource; */
+
+const useSqliteDataSource = () => {
+    const [initializedDataSource, setInitializedDataSource] = useState<DataSource | null>(null);
+  
+    useEffect(() => {
+      const initDataSource = async () => {
+        console.log("Data:", initializedDataSource);
+  
+        try {
+          if (!initializedDataSource) {
+            const _initializedDataSource = await dataSource.initialize();
+            console.log('Data source initialized');
+            setInitializedDataSource(_initializedDataSource);
+          } else {
+            console.log('Data source has already been initialized');
+          }
+        } catch (error) {
+          console.log("Failed to retrieve data:", error);
+        }
+      };
+  
+      initDataSource();
+    }, []); // Empty dependency array to run the effect only once on mount
+  
+    return initializedDataSource;
+  };
+  
+  export default useSqliteDataSource;

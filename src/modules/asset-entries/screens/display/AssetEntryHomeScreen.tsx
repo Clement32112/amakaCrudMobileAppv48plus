@@ -2,12 +2,12 @@ import React, { useCallback, useContext, useEffect, useMemo, useState } from 're
 import { StyleSheet, TouchableOpacity, View } from 'react-native';
 
 import { DisplayOptions } from '../../types/definitions';
-import { transformEntriesToDateSections } from '../../services/asset-entry.service';
+import { transformEntriesToDateSections } from '../../services/asset-entry.service';                                   
 import EntryFlatList from './EntryFlatList';
 import Spreadsheet from './Spreadsheet';
 import { AssetEntryContext } from '../../contexts/Contexts';
 import EntrySectionList from './EntrySectionList';
-import { AssetEntry } from '../../entities/asset-entry.entity';
+import { AssetEntry } from '../../entities/bio-data.entity';
 
 import { Icon, SearchBar } from "@rneui/themed";
 import { Text } from '@rneui/base';
@@ -42,7 +42,16 @@ const AssetEntryHomeScreen: React.FC = () => {
             const newData = assetEntries.filter((item) => {
                 //Check fields for occurrence
                 //I am using formatted Date in combined fields below so as to allow for search of month in word
-                const combinedFields = `${item.description} ${item.value} ${item.acquireMonth + 1} ${moment([item.acquireYear, item.acquireMonth, item.acquireDay]).format("LL")}`;
+                /* 
+id
+firstName
+lastName
+middleName
+dateOfBirth
+homeAddress
+dateOfRegistration
+_21120612479 */
+                const combinedFields = `${item.firstName} ${item.lastName} `;//${item.acquireMonth + 1} ${moment([item.acquireYear, item.acquireMonth, item.acquireDay]).format("LL")}
                 const itemData = combinedFields
                     ? combinedFields.toUpperCase()
                     : ''.toUpperCase();
@@ -65,7 +74,7 @@ const AssetEntryHomeScreen: React.FC = () => {
    * give condition in square bracket under which the function
    * will rerun
    */
-    const getEntriesInDateSections = useMemo(() => {
+    const getEntriesInDateSections = useMemo(() => {                                
         return transformEntriesToDateSections(filteredAssetEntries)
     }, [filteredAssetEntries]);//only run anew if entries in state change
 
@@ -77,7 +86,7 @@ const AssetEntryHomeScreen: React.FC = () => {
         switch (settings) {
             case DisplayOptions.FLAT_LIST: return <EntryFlatList entries={filteredAssetEntries} />
             case DisplayOptions.SPREADSHEET: return <Spreadsheet entries={filteredAssetEntries} />
-            default: return <EntrySectionList entriesInDateSections={getEntriesInDateSections!} />
+            default: return <EntrySectionList entriesInDateSections={getEntriesInDateSections!} />  
         }
     }
 
@@ -89,7 +98,7 @@ const AssetEntryHomeScreen: React.FC = () => {
                     searchIcon={{ size: 24 }}
                     placeholder="Type here..."
                     value={search}
-                    containerStyle={{ backgroundColor: 'lightgreen' }}
+                    containerStyle={{ backgroundColor: 'mistyrose' }}
                     onChangeText={(text) => searchFilterFunction(text)}
                 />
             </View>
@@ -100,7 +109,7 @@ const AssetEntryHomeScreen: React.FC = () => {
                 onPress={() => navigation.navigate("AddEntryScreen" as never)}>
                 <Text><Icon
                     name="add"
-                    color="green"
+                    color="mistyrose"
                     size={20}
                     raised={true}
                 /></Text>

@@ -1,6 +1,6 @@
 import { createContext } from "react";
 import { DataSource } from "typeorm/browser";
-import { AssetEntry } from "../entities/asset-entry.entity";
+import { AssetEntry } from "../entities/bio-data.entity";
 import { DisplayOptions } from "../types/definitions";
 
 export type AssetEntryContextType = {

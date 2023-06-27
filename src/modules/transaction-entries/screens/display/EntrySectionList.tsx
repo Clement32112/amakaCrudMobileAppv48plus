@@ -13,7 +13,7 @@ const EntrySectionList: React.FC<Props> = ({ entriesInDateSections }) => {
 
     return (
         <SectionList
-            style={{ width: '100%', padding: 3, backgroundColor: 'skyblue' }}
+            style={{ width: '100%', padding: 3, backgroundColor: 'pink' }}
             sections={entriesInDateSections}
             keyExtractor={(item, index) => item + index.toString()}
             renderItem={({ item }) => (
@@ -27,7 +27,7 @@ const EntrySectionList: React.FC<Props> = ({ entriesInDateSections }) => {
             ListHeaderComponent={
                 () => (
                     <View>
-                        <Text h4 style={[styles.inputContainerStyle, { backgroundColor: "lightblue" }]}>Entries found by date...</Text>
+                        <Text h4 style={[styles.inputContainerStyle, { backgroundColor: "mistyrose" }]}>Entries found by date...</Text>
                     </View>
                 )}
 
@@ -52,7 +52,7 @@ export default EntrySectionList;
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: 'lightblue',
+        backgroundColor: 'pink',
         alignItems: 'center',
         justifyContent: 'center'
     },

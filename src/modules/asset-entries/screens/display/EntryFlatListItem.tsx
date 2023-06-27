@@ -21,10 +21,10 @@ const EntryFlatListItem: React.FC<Props> = ({ item }) => {
     
     return (
         <View style={styles.inputContainerStyle}>
-            <Text style={{ fontSize: 18 }}>Acquisition Date: {moment([item.acquireYear!, item.acquireMonth!, item.acquireDay!]).format('LL')}</Text>
-            <Text style={{ fontSize: 18 }}>Tangible?: {item.tangible ? "No" : "Yes"}</Text>
-            <Text style={{ fontSize: 18 }}>Description: {item.description}</Text>
-            <Text style={{ fontSize: 18 }}>Value: {item.value}</Text>
+            {/* <Text style={{ fontSize: 18 }}>Acquisition Date: {moment([item.acquireYear!, item.acquireMonth!, item.acquireDay!]).format('LL')}</Text> */}
+            <Text style={{ fontSize: 18 }}>Tangible?: {item._21120612479 ? "No" : "Yes"}</Text>
+            <Text style={{ fontSize: 18 }}>Description: {item.firstName}</Text>
+            <Text style={{ fontSize: 18 }}>Value: {item.id}</Text>
             <ButtonGroup
                 containerStyle={{ backgroundColor: 'transparent', width: '40%', borderColor: 'transparent' }}
                 buttons={

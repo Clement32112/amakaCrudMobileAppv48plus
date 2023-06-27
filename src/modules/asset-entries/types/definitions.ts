@@ -1,14 +1,20 @@
-import { AssetEntry } from "../entities/asset-entry.entity";
+import { AssetEntry } from "../entities/bio-data.entity";
 
 export interface IAssetEntry {
     id?: number;
-    acquireDay?: number;
+    /* acquireDay?: number;
     acquireMonth?: number;
     acquireYear?: number;
     description: string;
     value: number;
     tangible?: boolean;
-    SN?: number;
+    SN?: number; */
+    
+firstName: string;
+lastName: string;
+middleName: string;
+homeAddress: string;
+_21120612479?: boolean;
 }
 
 /**
